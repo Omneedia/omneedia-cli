@@ -1,0 +1,15 @@
+{
+	"*" : [
+		"omneedia.Localizer",
+		"omneedia.app@ExtJS",
+		"omneedia.Auth"
+	],
+	"webapp": [
+		"omneedia.webapp.Uploader",
+		"omneedia.webapp.GlobalMenu",
+		"Ext.ux.Notification"
+	],
+	"mobile": [
+		"omneedia.app@Angular"
+	]
+}

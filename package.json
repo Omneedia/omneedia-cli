@@ -1,0 +1,63 @@
+{
+		"name": "omneedia",
+		"version": "0.9.5",
+		"description": "Omneedia CLI Framework",
+		"main": "omneedia.js",
+		"directories": {
+				"lib": "lib",
+				"auth.template": "auth.template",
+				"tpl": "tpl",
+				"license": "license",
+				"mobile": "mobile"
+		},
+		"bin": {
+				"omneedia": "omneedia.js",
+				"oa": "omneedia.js"
+		},
+		"dependencies": {
+				"@omneedia/api": "^1.0.0",
+				"@omneedia/authom": "*",
+				"@omneedia/db": "*",
+				"@omneedia/unzip": "*",
+				"body-parser": "^1.18.2",
+				"chokidar": "^1.7.0",
+				"colors": "^1.1.2",
+				"compression": "^1.7.1",
+				"cookie-parser": "^1.4.3",
+				"cors": "^2.8.4",
+				"emojic": "^1.1.12",
+				"errorhandler": "^1.5.0",
+				"express": "^4.16.2",
+				"express-session": "^1.15.6",
+				"figlet": "^1.2.0",
+				"html-minifier": "^3.5.5",
+				"inquirer": "^3.3.0",
+				"jimp": "^0.2.28",
+				"launch-browser": "^1.0.0",
+				"morgan": "^1.9.0",
+				"multer": "^1.3.0",
+				"mysql": "^2.15.0",
+				"npm-sass": "^2.2.1",
+				"parse-function": "^5.0.23",
+				"qrcode-npm": "0.0.3",
+				"request": "^2.83.0",
+				"session-file-store": "^1.1.2",
+				"shelljs": "^0.7.8",
+				"shortid": "^2.2.8",
+				"socket.io": "^2.0.3"
+		},
+		"devDependencies": {},
+		"repository": {
+				"type": "git",
+				"url": "git://github.com/omneedia/framework.git"
+		},
+		"scripts": {
+				"test": "echo \"Error: no test specified\" && exit 1"
+		},
+		"author": {
+				"name": "Stephane Zucatti",
+				"email": "stephane.zucatti@me.com",
+				"url": "http://omneedia.com"
+		},
+		"license": "ISC"
+}
