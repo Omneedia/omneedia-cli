@@ -7,11 +7,6 @@
  */
 
 global.$_VERSION = "0.9.X";
- 
-//PROD
-//global.$_CDN = "http://cdn.omneedia.com"; 
-// DEBUG
-global.$_CDN = "/cdn";
 
 var path = require('path');
 var sep="/";
