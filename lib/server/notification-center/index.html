@@ -1,0 +1,316 @@
+<html>
+
+<head>
+	<style>
+		body {
+			background-color: #f5f4f5;
+			overflow: hidden;
+		}
+		
+		.notification {
+			display: none;
+		}
+		
+		.date {
+			width: 370px;
+			text-align: left;
+			margin-top: 10px;
+			margin-bottom: 30px;
+			padding-left: 20px;
+		}
+		
+		.today {
+			font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 200;
+			font-size: 38px;
+			padding: 10px;
+			overflow: auto;
+		}
+		
+		.card {
+			margin-top: 10px;
+			width: 370px;
+			height: 200px;
+			border: 1px solid #eeeeee;
+			border-radius: 5px;
+			background: #eeeeee;
+			padding: 0px;
+		}
+		
+		.icon {
+			background-image: url(bug.png);
+			width: 16px;
+			height: 16px;
+			display: inline;
+			float: left;
+			margin-top: -1px;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		
+		.header {
+			height: 20px;
+			background: #dddddd;
+			border-radius: 5px 5px 0px 0px;
+			border-radius: 5px 5px 0px 0px;
+			padding-top: 5px;
+		}
+		
+		.title {
+			margin-left: 5px;
+			text-align: left;
+			font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+			font-size: 13px;
+			font-weight: 10;
+			color: black;
+		}
+		
+		.notification-css .search-input {
+			box-sizing: border-box;
+			background-clip: padding-box;
+			padding: 0;
+			margin: 0;
+			font: inherit;
+			color: inherit;
+			background: transparent;
+			border: none;
+			vertical-align: top;
+			outline: none;
+			line-height: 1;
+			font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 400;
+			-webkit-appearance: textfield;
+			-moz-appearance: textfield;
+			appearance: textfield;
+			box-sizing: border-box;
+			height: 28px;
+			font-size: 14px;
+			background-color: rgba(3, 3, 3, .09);
+			box-shadow: none;
+			color: #1f1f21;
+			line-height: 1.3;
+			padding: 0 8px 0 28px;
+			margin: 0;
+			border-radius: 5.5px;
+			background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMTMgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQyICgzNjc4MSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+aW9zLXNlYXJjaC1pbnB1dC1pY29uPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9ImNvbXBvbmVudHMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJpb3Mtc2VhcmNoLWlucHV0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDguMDAwMDAwLCAtNDMuMDAwMDAwKSIgZmlsbD0iIzdBNzk3QiI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAuMDAwMDAwLCAzNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNi45OTcyNDgyLDE1LjUwNDE0NjYgQzE3LjA3NzM2NTcsMTUuNTQwNTkzOCAxNy4xNTIyNzMxLDE1LjU5MTYxMjkgMTcuMjE3NzUxNiwxNS42NTcwOTE0IEwyMC42NDk5OTEsMTkuMDg5MzMwOCBDMjAuOTQ0ODQ0OSwxOS4zODQxODQ3IDIwLjk0ODQ3NjQsMTkuODU4NjA2IDIwLjY1MzU0MTIsMjAuMTUzNTQxMiBDMjAuMzYwNjQ4LDIwLjQ0NjQzNDQgMTkuODgxMjcxNiwyMC40NDE5MzE3IDE5LjU4OTMzMDgsMjAuMTQ5OTkxIEwxNi4xNTcwOTE0LDE2LjcxNzc1MTYgQzE2LjA5MTM3LDE2LjY1MjAzMDEgMTYuMDQwMTE3MSwxNi41NzczODc0IDE2LjAwMzQxNDEsMTYuNDk3Nzk5NSBDMTUuMTY3MTY5NCwxNy4xMjcwNDExIDE0LjEyNzEzOTMsMTcuNSAxMywxNy41IEMxMC4yMzg1NzYzLDE3LjUgOCwxNS4yNjE0MjM3IDgsMTIuNSBDOCw5LjczODU3NjI1IDEwLjIzODU3NjMsNy41IDEzLDcuNSBDMTUuNzYxNDIzNyw3LjUgMTgsOS43Mzg1NzYyNSAxOCwxMi41IEMxOCwxMy42Mjc0Njg1IDE3LjYyNjgyMzIsMTQuNjY3Nzc2OCAxNi45OTcyNDgyLDE1LjUwNDE0NjYgWiBNMTMsMTYuNSBDMTUuMjA5MTM5LDE2LjUgMTcsMTQuNzA5MTM5IDE3LDEyLjUgQzE3LDEwLjI5MDg2MSAxNS4yMDkxMzksOC41IDEzLDguNSBDMTAuNzkwODYxLDguNSA5LDEwLjI5MDg2MSA5LDEyLjUgQzksMTQuNzA5MTM5IDEwLjc5MDg2MSwxNi41IDEzLDE2LjUgWiIgaWQ9Imlvcy1zZWFyY2gtaW5wdXQtaWNvbiI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=');
+			background-position: 8px center;
+			background-repeat: no-repeat;
+			background-size: 13px;
+			font-weight: 400;
+			display: inline-block;
+			text-indent: 0;
+		}
+		
+		.notification-css .search-input::-webkit-search-cancel-button {
+			-webkit-appearance: textfield;
+			appearance: textfield;
+			display: none;
+		}
+		
+		.notification-css .search-input::-webkit-search-decoration {
+			display: none;
+		}
+		
+		.notification-css .search-input:focus {
+			outline: none;
+		}
+		
+		.notification-css .search-input::-webkit-input-placeholder {
+			color: #7a797b;
+			font-size: 14px;
+			text-indent: 0;
+		}
+		
+		.notification-css .search-input::-moz-placeholder {
+			color: #7a797b;
+			font-size: 14px;
+			text-indent: 0;
+		}
+		
+		.notification-css .search-input:-ms-input-placeholder {
+			color: #7a797b;
+			font-size: 14px;
+			text-indent: 0;
+		}
+		
+		.notification-css .search-input::placeholder {
+			color: #7a797b;
+			font-size: 14px;
+			text-indent: 0;
+		}
+		
+		.notification-css .search-input:placeholder-shown {}
+		
+		.notification-css .search-input:disabled {
+			opacity: 0.3;
+			cursor: default;
+			pointer-events: none;
+		}
+		
+		.notification-css .segment {
+			font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 400;
+			display: -webkit-inline-box;
+			display: -webkit-inline-flex;
+			display: inline-flex;
+			-webkit-box-align: stretch;
+			-webkit-align-items: stretch;
+			align-items: stretch;
+			-webkit-align-content: stretch;
+			align-content: stretch;
+			-webkit-flex-wrap: nowrap;
+			flex-wrap: nowrap;
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		
+		.notification-css .segment__item {
+			font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 400;
+			border-radius: 0;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			position: relative;
+			overflow: hidden;
+			box-sizing: border-box;
+			display: block;
+			background-color: transparent;
+			border: none;
+		}
+		
+		.notification-css .segment__input {
+			position: absolute;
+			right: 0;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			padding: 0;
+			border: 0;
+			background-color: transparent;
+			z-index: 1;
+			vertical-align: top;
+			outline: none;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+		
+		.notification-css .segment__button {
+			font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			font-weight: 400;
+			border-radius: 0;
+			background-color: transparent;
+			color: #0076ff;
+			border: 1px solid #0076ff;
+			border-top-width: 1px;
+			border-bottom-width: 1px;
+			border-right-width: 1px;
+			border-left-width: 0;
+			font-weight: 400;
+			padding: 0;
+			font-size: 13px;
+			height: 29px;
+			line-height: 29px;
+			width: 100%;
+			-webkit-transition: background-color 0.2s linear, color 0.2s linear;
+			transition: background-color 0.2s linear, color 0.2s linear;
+			box-sizing: border-box;
+		}
+		
+		.notification-css .segment__item:disabled {
+			opacity: 0.3;
+			cursor: default;
+			pointer-events: none;
+		}
+		
+		.notification-css .segment__button:hover {
+			-webkit-transition: none;
+			transition: none;
+		}
+		
+		.notification-css .segment__button:focus {
+			outline: 0;
+		}
+		
+		.notification-css :active+.segment__button {
+			background-color: rgb(179, 214, 255);
+			border: 0 solid #0076ff;
+			border-top: 1px solid #0076ff;
+			border-bottom: 1px solid #0076ff;
+			border-right: 1px solid #0076ff;
+			font-size: 13px;
+			width: 100%;
+			-webkit-transition: none;
+			transition: none;
+		}
+		
+		.notification-css :checked+.segment__button {
+			background-color: #0076ff;
+			color: #fff;
+			-webkit-transition: none;
+			transition: none;
+		}
+		
+		.notification-css .segment__item:first-child>.segment__button {
+			border-left-width: 1px;
+			border-radius: 4px 0 0 4px;
+		}
+		
+		.notification-css .segment__item:last-child>.segment__button {
+			border-right-width: 1px;
+			border-radius: 0 4px 4px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="notification-css" align="center">
+		<div class="segment" style="width: 380px; margin: 0 auto;">
+			<button class="segment__item">
+				<input type="radio" class="segment__input" name="segment-a" checked>
+				<div class="segment__button">Aujourd'hui</div>
+			</button>
+			<button class="segment__item">
+				<input type="radio" class="segment__input" name="segment-a">
+				<div class="segment__button">Notifications</div>
+			</button>
+		</div>
+		<div class="today">
+			<div class="date">Lundi
+				<br>30 octobre</div>
+			<input type="search" value="" placeholder="Search" class="search-input" style="width: 370px">
+			<div class="card">
+				<div class="header">
+					<div class="icon"></div>
+					<div class="title">ACTUALITES</div>
+				</div>
+				<div class="content"> </div>
+			</div>
+			<div class="card">
+				<div class="header">
+					<div class="icon"></div>
+					<div class="title">CALCULETTE</div>
+				</div>
+				<div class="content"> </div>
+			</div>
+		</div>
+	</div>
+	<div class="notification"> zzzz </div>
+</body>
+
+</html>

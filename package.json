@@ -1,6 +1,6 @@
 {
 		"name": "omneedia",
-		"version": "0.9.10",
+		"version": "0.9.20",
 		"description": "Omneedia CLI Framework",
 		"main": "omneedia.js",
 		"directories": {
@@ -39,6 +39,7 @@
 				"mysql": "^2.15.0",
 				"npm-sass": "^2.2.1",
 				"parse-function": "^5.0.23",
+				"prettyjson": "^1.2.1",
 				"qrcode-npm": "0.0.3",
 				"request": "^2.83.0",
 				"session-file-store": "^1.1.2",
