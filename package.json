@@ -1,6 +1,6 @@
 {
     "name": "omneedia",
-    "version": "0.9.22",
+    "version": "0.9.23",
     "description": "Omneedia CLI Framework",
     "main": "omneedia.js",
     "directories": {
@@ -30,6 +30,7 @@
         "express": "^4.16.2",
         "express-session": "^1.15.6",
         "figlet": "^1.2.0",
+        "form-data": "^2.3.1",
         "html-minifier": "^3.5.5",
         "inquirer": "^3.3.0",
         "jimp": "^0.2.28",
@@ -45,7 +46,9 @@
         "session-file-store": "^1.1.2",
         "shelljs": "^0.7.8",
         "shortid": "^2.2.8",
-        "socket.io": "^2.0.3"
+        "socket.io": "^2.0.3",
+        "superagent": "^3.8.1",
+        "superagent-proxy": "^1.0.2"
     },
     "devDependencies": {},
     "repository": {
