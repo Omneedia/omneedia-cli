@@ -1,6 +1,6 @@
 {
     "name": "omneedia",
-    "version": "0.9.24",
+    "version": "0.9.27",
     "description": "Omneedia CLI Framework",
     "main": "omneedia.js",
     "directories": {
@@ -16,9 +16,9 @@
     },
     "dependencies": {
         "@omneedia/api": "^1.0.0",
-        "@omneedia/authom": "*",
-        "@omneedia/db": "*",
-        "@omneedia/unzip": "*",
+        "@omneedia/authom": "",
+        "@omneedia/db": "^1.0.10",
+        "@omneedia/unzip": "",
         "body-parser": "^1.18.2",
         "chokidar": "^1.7.0",
         "colors": "^1.1.2",
@@ -31,7 +31,7 @@
         "express-session": "^1.15.6",
         "figlet": "^1.2.0",
         "form-data": "^2.3.1",
-        "html-minifier": "^3.5.5",
+        "html-minifier": "^3.5.7",
         "inquirer": "^3.3.0",
         "jimp": "^0.2.28",
         "launch-browser": "^1.0.0",
@@ -43,7 +43,7 @@
         "prettyjson": "^1.2.1",
         "qrcode-npm": "0.0.3",
         "request": "^2.83.0",
-        "session-file-store": "^1.1.2",
+        "session-file-store": "^1.2.0",
         "shelljs": "^0.7.8",
         "shortid": "^2.2.8",
         "socket.io": "^2.0.3",
