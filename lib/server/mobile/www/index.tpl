@@ -42,7 +42,7 @@
 		<div class="os" style="text-align:center">
 			<div id="ios" class="selected"><div class="ios"></div><small><small>iOS</small></small></div>
 			<div id="android" class="border"><div class="android"></div><small><small>android</small></small></div>
-			<div id="windows" class="border"><div class="windows"></div><small><small>windows</small></small></div>
+			<!--div id="windows" class="border"><div class="windows"></div><small><small>windows</small></small></div-->
 		</div> 
 	</div>
 	<div class="display"><b>{TITLE}</b><br><small>{DESCRIPTION}<br>{VERSION}<br>{COPYRIGHT}</small></div>
