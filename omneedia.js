@@ -75,7 +75,8 @@ cli.config(function() {
 
         if ((process.argv.indexOf("auto#1") > -1) || (process.argv.indexOf("auto#0") > -1)) {
             var monitor = require('chokidar');
-            var watcher = monitor.watch([PROJECT_APP, PROJECT_HOME], { persistent: true });
+
+            var watcher = monitor.watch([PROJECT_APP], { persistent: true });
             watcher.on('raw', function(path, stats, details) {
                 if (stats.indexOf('package.json') > -1) return;
                 if (stats.indexOf('node_modules') > -1) return;

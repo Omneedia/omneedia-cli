@@ -1,6 +1,6 @@
 {
     "name": "omneedia",
-    "version": "0.9.30",
+    "version": "0.9.34",
     "description": "Omneedia CLI Framework",
     "main": "omneedia.js",
     "directories": {
