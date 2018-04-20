@@ -1,0 +1,161 @@
+.ico-business {
+    background-image: url(db/ico-business.png);
+    background-size: contain;
+}
+
+.ico-server {
+    background-image: url(db/ico-server.png);
+    background-size: contain;
+}
+
+.ico-db {
+    background-image: url(db/ico-db.png);
+    background-size: contain;
+}
+
+.ico-tb {
+    background-image: url(db/tb.png);
+    background-size: contain;
+}
+
+.ico-view {
+    background-image: url(db/view.png);
+    background-size: contain;
+}
+
+.ico-res {
+    background-image: url(db/res.png);
+    background-size: contain;
+}
+
+.ico-mycomputer {
+    background-image: url(db/Computer-2-icon.png);
+    background-size: contain;
+}
+
+.ico-package {
+    background-image: url(db/package.png);
+    background-size: contain;
+}
+
+.ico-sqlserver {
+    background-image: url(db/sqlserver.png);
+    background-size: contain;
+}
+
+.ico-link {
+    background-image: url(db/link.png);
+    background-size: contain;
+}
+
+.ico-openfile {
+    background-image: url(db/openfile.png);
+    background-size: contain;
+}
+
+.ico-newfile {
+    background-image: url(db/newfile.png);
+    background-size: contain;
+}
+
+.ico-savefile {
+    background-image: url(db/ico-savefile.png);
+    background-size: contain;
+}
+
+.ico-add {
+    background-image: url(db/ico-add.png);
+    background-size: contain;
+}
+
+.ico-undb {
+    background-image: url(db/ico-undb.png);
+    background-size: contain;
+}
+
+.ico-unlink {
+    background-image: url(db/ico-unlink.png);
+    background-size: contain;
+}
+
+.ico-addtable {
+    background-image: url(db/add-column.png);
+    background-size: contain;
+}
+
+.ico-deletetb {
+    background-image: url(db/ico-deletetb.png);
+    background-size: contain;
+}
+
+.ico-rename {
+    background-image: url(db/ico-rename.png);
+    background-size: contain;
+}
+
+.ico-db-create {
+    background-image: url(db/database-import.png);
+    background-size: contain;
+}
+
+.ico-db-cloud {
+    background-image: url(db/data-cloud.png);
+    background-size: contain;
+}
+
+.ico-import {
+    background-image: url(db/ico-import.png);
+    background-size: contain;
+}
+
+.key {
+    background-image: url(db/key.png);
+    background-size: 16px 16px;
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+
+.key_green {
+    background-image: url(db/key_green.png);
+    background-size: 16px 16px;
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+
+.key_red {
+    background-image: url(db/key_red.png);
+    background-size: 16px 16px;
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+
+.fld {
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    float: left;
+}
+
+.check {
+    background-image: url(db/check.png);
+    background-size: 20px 16px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 16px;
+}
+
+.uncheck {
+    background-image: url(db/uncheck.png);
+    background-size: 20px 16px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 16px;
+}
