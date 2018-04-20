@@ -1,6 +1,6 @@
 {
     "name": "omneedia",
-    "version": "0.9.49",
+    "version": "0.9.50",
     "description": "Omneedia CLI Framework",
     "main": "omneedia.js",
     "directories": {
@@ -65,7 +65,6 @@
         "targz": "^1.0.1",
         "tmp": "0.0.33",
         "trustproxy": "^1.0.0",
-        "unzip": "^0.1.11",
         "unzip-stream": "^0.3.0"
     },
     "devDependencies": {},
