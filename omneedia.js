@@ -15,13 +15,31 @@ process.args = parseArgs(process.argv);
 
 var cli = require('./lib/cli');
 
+//if (process.args.mysql) require('./lib/cmd/mysql');
+Math = require('./lib/framework/math')();
+Date = require('./lib/framework/dates')();
+Object = require('./lib/framework/objects')();
+Array = require('./lib/framework/arrays')();
+require('./lib/framework/utils');
+
 function cmds() {
-    if (process.args.mysql) require('./lib/cmd/mysql');
+
+    // cloud
+    if (process.argv.indexOf('db') > -1) return require('./lib/cmd/db')();
+
     if (process.argv.indexOf('create') > -1) require('./lib/cmd/create');
     if (process.argv.indexOf('config') > -1) require('./lib/cmd/config');
     if (process.argv.indexOf('start') > -1) require('./lib/cmd/start');
     if (process.argv.indexOf('update') > -1) require('./lib/cmd/update');
+    if (process.argv.indexOf('login') > -1) require('./lib/cmd/login');
+    if (process.argv.indexOf('logout') > -1) require('./lib/cmd/logout');
 
+    if (process.argv.indexOf('key') > -1) return require('./lib/cmd/key');
+
+    if (process.argv.indexOf('snapshot') > -1) require('./lib/cmd/snapshot');
+    if (process.argv.indexOf('history') > -1) require('./lib/cmd/history');
+
+    // EXPERIMENTAL !!
     if (process.argv.indexOf('ionic') > -1) {
         const cp = require('child_process');
         var z = -1;
@@ -42,7 +60,7 @@ function cmds() {
 };
 
 // Init the display
-cli.config(function() {
+cli.config(function () {
 
     if (process.argv.indexOf('start') > -1) {
         require('./lib/globals');
@@ -63,7 +81,7 @@ cli.config(function() {
                 aargs.unshift('auto#' + op);
             };
             var _CP2 = _CP.fork(__dirname + require('path').sep + "omneedia.js", aargs);
-            _CP2.on('exit', function() {
+            _CP2.on('exit', function () {
                 __RESTART__(1);
             });
         };
@@ -76,8 +94,11 @@ cli.config(function() {
         if ((process.argv.indexOf("auto#1") > -1) || (process.argv.indexOf("auto#0") > -1)) {
             var monitor = require('chokidar');
 
-            var watcher = monitor.watch([PROJECT_APP], { persistent: true });
-            watcher.on('raw', function(path, stats, details) {
+            var watcher = monitor.watch([PROJECT_APP], {
+                persistent: true
+            });
+            watcher.on('raw', function (path, stats, details) {
+                console.log(stats);
                 if (stats.indexOf('package.json') > -1) return;
                 if (stats.indexOf('node_modules') > -1) return;
                 //if (stats.indexOf('favicon.ico')>-1) return;
