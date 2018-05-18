@@ -34,6 +34,8 @@ function cmds() {
     if (process.argv.indexOf('login') > -1) require('./lib/cmd/login');
     if (process.argv.indexOf('logout') > -1) require('./lib/cmd/logout');
 
+    if (process.argv.indexOf('link') > -1) return require('./lib/cmd/link');
+
     if (process.argv.indexOf('key') > -1) return require('./lib/cmd/key');
 
     if (process.argv.indexOf('snapshot') > -1) require('./lib/cmd/snapshot');
@@ -120,4 +122,5 @@ cli.config(function () {
     }
 
     cli.display(cmds);
+
 });
