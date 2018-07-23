@@ -1,6 +1,6 @@
 {
     "name": "omneedia",
-    "version": "0.9.52",
+    "version": "0.9.55",
     "description": "Omneedia CLI Framework",
     "main": "omneedia.js",
     "directories": {
@@ -16,11 +16,14 @@
     },
     "dependencies": {
         "@omneedia/api": "^1.0.0",
-        "@omneedia/authom": "",
-        "@omneedia/db": "^1.0.10",
+        "@omneedia/authom": "^1.1.1",
+        "@omneedia/db": "1.2.0",
         "@omneedia/parse-function": "^5.0.23",
         "@omneedia/unzip": "^0.1.21",
+        "@omneedia/mailer": "1.1.0",
         "body-parser": "^1.18.2",
+        "nodemailer": "4.6.7",
+        "nodemailer-smtp-transport": "2.7.4",
         "bonjour": "^3.5.0",
         "chokidar": "^2.0.3",
         "cli-progress": "^1.7.0",
@@ -64,6 +67,7 @@
         "ssh-keygen": "^0.4.1",
         "streamifier": "^0.1.1",
         "targz": "^1.0.1",
+        "terminal-link": "^1.1.0",
         "tmp": "0.0.33",
         "trustproxy": "^1.0.0",
         "unzip": "^0.1.11",
