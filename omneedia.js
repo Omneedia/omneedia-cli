@@ -35,6 +35,11 @@ function cmds() {
     if (process.argv.indexOf('logout') > -1) require('./lib/cmd/logout');
 
     if (process.argv.indexOf('link') > -1) return require('./lib/cmd/link');
+    if (process.argv.indexOf('unlink') > -1) return require('./lib/cmd/unlink');
+    if (process.argv.indexOf('up') > -1) return require('./lib/cmd/up');
+    if (process.argv.indexOf('down') > -1) return require('./lib/cmd/down');
+
+    if (process.argv.indexOf('build') > -1) return require('./lib/cmd/build');
 
     if (process.argv.indexOf('key') > -1) return require('./lib/cmd/key');
 
@@ -93,14 +98,17 @@ cli.config(function () {
             return;
         };
 
+
         if ((process.argv.indexOf("auto#1") > -1) || (process.argv.indexOf("auto#0") > -1)) {
             var monitor = require('chokidar');
 
             var watcher = monitor.watch([PROJECT_APP], {
                 persistent: true
             });
+
             watcher.on('raw', function (path, stats, details) {
                 console.log(stats);
+                console.log(details);
                 if (stats.indexOf('package.json') > -1) return;
                 if (stats.indexOf('node_modules') > -1) return;
                 //if (stats.indexOf('favicon.ico')>-1) return;
@@ -110,9 +118,10 @@ cli.config(function () {
                 if (stats.indexOf('/etc/') > -1) return;
                 if (stats.indexOf('Settings.js') > -1) return;
                 if (stats.indexOf('.DS_Store') > -1) return;
-                var emojic = require("emojic");
-                console.log("");
-                console.log(emojic.warning + "     Change detected... reload".yellow);
+
+                var chalk = require('chalk');
+
+                console.log(chalk.bold.yellow("\t\nChange detected... reload".yellow));
                 console.log("");
                 if (details) console.log(JSON.stringify(details, null, 4).yellow);
                 console.log("");
