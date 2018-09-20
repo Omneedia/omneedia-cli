@@ -151,14 +151,7 @@ function loadResources(list,cb) {
 	cb();
 };
 
-setTimeout(function () {
-	var i = document.createElement('iframe');
-	i.src="/z/"+shortid().gen();
-	document.getElementsByTagName('body')[0].appendChild(i);
-},1000);
-
 function BOOTSTRAP_ME() {
-	document.getElementsByTagName('iframe')[0].parentNode.removeChild(document.getElementsByTagName('iframe')[0]);
 	require(['Contents/Settings'],function() {
 		loadResources(Settings.RESOURCES, function() {
 			require(Settings.FRAMEWORKS,function() {
@@ -172,6 +165,8 @@ function BOOTSTRAP_ME() {
 	});
 }
 
+window.z="0mneediaRulez!";
+setTimeout(BOOTSTRAP_ME,1000);
 
 
 </script>

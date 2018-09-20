@@ -34,6 +34,9 @@ function cmds() {
     if (process.argv.indexOf('login') > -1) require('./lib/cmd/login');
     if (process.argv.indexOf('logout') > -1) require('./lib/cmd/logout');
 
+    if (process.argv.indexOf('generate') > -1) return require('./lib/cmd/generate');
+    if (process.argv.indexOf('g') > -1) return require('./lib/cmd/generate');
+
     if (process.argv.indexOf('link') > -1) return require('./lib/cmd/link');
     if (process.argv.indexOf('unlink') > -1) return require('./lib/cmd/unlink');
     if (process.argv.indexOf('up') > -1) return require('./lib/cmd/up');
@@ -100,15 +103,15 @@ cli.config(function () {
 
 
         if ((process.argv.indexOf("auto#1") > -1) || (process.argv.indexOf("auto#0") > -1)) {
+
             var monitor = require('chokidar');
 
-            var watcher = monitor.watch([PROJECT_APP], {
+            var watcher = monitor.watch([PROJECT_APP, PROJECT_SYSTEM, PROJECT_API], {
                 persistent: true
             });
 
             watcher.on('raw', function (path, stats, details) {
-                console.log(stats);
-                console.log(details);
+
                 if (stats.indexOf('package.json') > -1) return;
                 if (stats.indexOf('node_modules') > -1) return;
                 //if (stats.indexOf('favicon.ico')>-1) return;
@@ -116,13 +119,15 @@ cli.config(function () {
                 if (stats.indexOf('package-lock.json') > -1) return;
                 if (stats.indexOf('/theme/') > -1) return;
                 if (stats.indexOf('/etc/') > -1) return;
-                if (stats.indexOf('Settings.js') > -1) return;
+                //if (stats.indexOf('/Settings.js') > -1) return;
                 if (stats.indexOf('.DS_Store') > -1) return;
+
 
                 var chalk = require('chalk');
 
                 console.log(chalk.bold.yellow("\t\nChange detected... reload".yellow));
                 console.log("");
+                console.log(stats);
                 if (details) console.log(JSON.stringify(details, null, 4).yellow);
                 console.log("");
                 process.kill(process.pid);
