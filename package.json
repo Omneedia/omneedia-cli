@@ -1,6 +1,6 @@
 {
     "name": "omneedia",
-    "version": "0.9.59",
+    "version": "0.9.60",
     "description": "Omneedia CLI Framework",
     "main": "omneedia.js",
     "directories": {
@@ -17,10 +17,11 @@
     "dependencies": {
         "@omneedia/api": "^1.0.0",
         "@omneedia/authom": "^1.1.1",
-        "@omneedia/db": "^1.2.1",
+        "@omneedia/db": "^1.2.2",
         "@omneedia/mailer": "1.1.0",
         "@omneedia/parse-function": "^5.0.23",
         "@omneedia/unzip": "^0.1.21",
+        "@omneedia/scraper": "",
         "body-parser": "^1.18.2",
         "bonjour": "^3.5.0",
         "chokidar": "^2.0.3",
@@ -43,6 +44,7 @@
         "html-minifier": "^3.5.7",
         "inquirer": "^3.3.0",
         "jimp": "^0.2.28",
+        "jwt-decode": "^2.2.0",
         "keypair": "^1.0.1",
         "launch-browser": "^1.0.0",
         "lines-adapter": "0.0.5",

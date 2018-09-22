@@ -149,6 +149,7 @@
             font-family: -apple-system, 'Helvetica Neue', 'Helvetica', 'Arial', 'Lucida Grande', sans-serif;
             font-size: 13px;
             font-weight: 10;
+            margin-top: -1px;
             color: black;
             display: inline;
             float: left;
@@ -401,13 +402,13 @@
         <header>
             <div class="segment" style="width: 360px;margin-right:11px">
                 <button class="segment__item">
-				<input type="radio" id= "today" class="segment__input" name="segment-a" checked>
-				<div class="segment__button">Aujourd'hui</div>
-			</button>
+                    <input type="radio" id="today" class="segment__input" name="segment-a" checked>
+                    <div class="segment__button">Aujourd'hui</div>
+                </button>
                 <button class="segment__item">
-				<input type="radio" id= "notif" class="segment__input" name="segment-a">
-				<div class="segment__button">Notifications</div>
-			</button>
+                    <input type="radio" id="notif" class="segment__input" name="segment-a">
+                    <div class="segment__button">Notifications</div>
+                </button>
             </div>
         </header>
         <main>
@@ -415,7 +416,7 @@
                 <div class="date">Lundi
                     <br>30 octobre
                 </div>
-                <input type="search" value="" placeholder="Search" class="search-input" style="width: 360px">
+                <!--input type="search" value="" placeholder="Search" class="search-input" style="width: 360px"-->
                 <div class="card">
                     <div class="header">
                         <div class="icon"></div>
@@ -464,11 +465,37 @@
     </div>
 
     <script>
+        function loadXMLDoc(uri, cb) {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) { // XMLHttpRequest.DONE == 4
+                    console.log(xmlhttp.status);
+                    if (xmlhttp.status == 200) {
+                        return cb(null, xmlhttp.responseText);
+                    } else if (xmlhttp.status == 400) {
+                        return cb(true);
+                    } else {
+                        return cb(true);
+                    }
+                }
+            };
+
+            xmlhttp.open("GET", uri, true);
+            xmlhttp.send();
+        };
+        loadXMLDoc('https://www.cerema.fr/fr/actualites', function (e, r) {
+            console.log(e);
+            alert(r);
+        });
+    </script>
+
+    <script>
         document.querySelector('.today').style.display = "";
         document.querySelector('.notification').style.display = "none";
         var today = document.querySelectorAll(".segment__item");
         for (var i = 0; i < today.length; i++) {
-            today[i].addEventListener('click', function(a) {
+            today[i].addEventListener('click', function (a) {
                 if (a.srcElement.id == "today") {
                     document.querySelector('.today').style.display = "";
                     document.querySelector('.notification').style.display = "none";
@@ -483,11 +510,11 @@
         for (var i = 0; i < document.querySelectorAll('.header').length; i++) {
             if (document.querySelectorAll('.header')[i].querySelector('.close'))
                 document.querySelectorAll('.header')[i].querySelector('.close').style.display = "none";
-            document.querySelectorAll('.header')[i].addEventListener('mouseover', function(a) {
+            document.querySelectorAll('.header')[i].addEventListener('mouseover', function (a) {
                 var div = a.srcElement.querySelector('.close');
                 if (div) div.style.display = "";
             });
-            document.querySelectorAll('.header')[i].addEventListener('mouseleave', function(a) {
+            document.querySelectorAll('.header')[i].addEventListener('mouseleave', function (a) {
                 var div = a.srcElement.querySelector('.close');
                 if (div) div.style.display = "none";
             });
@@ -495,8 +522,9 @@
 
         var closenotif = document.querySelectorAll('.close');
         for (var i = 0; i < closenotif.length; i++) {
-            closenotif[i].addEventListener('click', function(a) {
-                if (a.srcElement.parentNode.parentNode.parentNode.parentNode.querySelectorAll('.card').length == 1) a.srcElement.parentNode.parentNode.parentNode.remove();
+            closenotif[i].addEventListener('click', function (a) {
+                if (a.srcElement.parentNode.parentNode.parentNode.parentNode.querySelectorAll('.card').length ==
+                    1) a.srcElement.parentNode.parentNode.parentNode.remove();
                 a.srcElement.parentNode.parentNode.remove();
             });
         }
